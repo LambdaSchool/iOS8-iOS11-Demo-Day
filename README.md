@@ -16,36 +16,57 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 ## Links (Add your links)
 
-* Code: `<insert Github repository link here>`
-* Trello/Github Project Kanban: `<insert trello board here>`
-* Test Flight: `<insert beta signup link here>`
-* YouTube demo video: `<insert video url here>`
+* Code: `https://github.com/jonbash/CountdownTracker`
+* Trello/Github Project Kanban: `https://github.com/jonbash/CountdownTracker/projects/1`
+* Test Flight: `not sure how to generate link!`
+* YouTube demo video: `https://youtu.be/GeCUVl4tQjo`
 
 ## Questions (Answer indented below)
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+    `That's a tough one... I think I'll go with combination filtering/sorting. It ended up being very easy and straightforward, but it somehow just felt very satisfying to implement.`
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
 
-    `<Your answer here>`
+    `At various points, seemingly innocuous things caught me off-guard. Most recently, I was having a hard time getting completed countdowns to alert the user when the countdown had completed if the app was open. I had not yet implemented dynamically updating countdown timer cells, and implementing that actually ended up making the alert a total breeze.`
   
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
+    `The following portion of my EventController made working with the same instance of the controller as a singleton very simple without having to pass the instance around via segues and delegates and such. I borrowed the concept from some C# coding videos I've been watching, so I'm not sure if the naming convention is "standard," but it works quite well.`
+
+```swift
+class EventController {
+    //...
+    
+    private static var _shared: EventController?
+    
+    static var shared: EventController {
+        if let sharedInstance = _shared {
+            return sharedInstance
+        } else {
+            _shared = EventController()
+            _shared?.loadEventsFromPersistenceStore()
+            
+            return _shared!
+        }
+    }
+    
+    //...
+}
+```
   
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
+    `Add the dates/times of important events in the near or distant future, and the app tells you how much time is left until then. When it arrives, you get an alert telling you the countdown has ended. You can sort/filter your list of countdowns by tags, end date, and more.`
   
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    `Sorting/filtering`
   
 6. What are you future goals?
 
-    `<Your answer here>`
+    `Post-countdown notes... Coloring countdowns based on nearness... Viewing archived countdowns... Adding images to countdowns... Customizable formatting... Recurring countdowns...`
 
 ## Required Slides (Add your Keynote to your PR)
 
