@@ -54,7 +54,7 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
     }  
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-Medication Tracker Lite is the perfect app for anyone who wants to keep track of the medications they need to take on a daily basis. It’s this simple: input your medication info, the days it needs to be taken, along with a description, and you’re good to go! Every day, the app will refresh and update so that you will know exactly what meds need to be taken.
+Medication Tracker Lite is the perfect app for anyone who wants to keep track of the medications they need to take on a daily basis. It’s this simple: input your medication info and frequency of consumption, along with a description, and you’re good to go! Every day, the app will refresh and update so you will know exactly what meds need to be taken for that day.
 
 5. What is your #1 feature?
 
@@ -62,7 +62,7 @@ Medication Tracker Lite is the perfect app for anyone who wants to keep track of
   
 6. What are you future goals?
 
-    Future goals would be to implement a reminder notification for each medication and/or groups of medications so that the user can be notifid at the proper times when they need to take their medicines.
+    Future goals would be to implement a reminder notification for each medication and/or groups of medications so that the user can be notified at the proper times when they need to take their medicines.
 
 ## Required Slides (Add your Keynote to your PR)
 
