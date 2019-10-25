@@ -18,8 +18,8 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 * Code: https://github.com/morsedan/HeartRateTracker/tree/master
 * Trello/Github Project Kanban: https://trello.com/b/FYUuI4EB/80-20-heart-rate-tracker
-* Test Flight: `<insert beta signup link here>`
-* YouTube demo video: `<insert video url here>`
+* Test Flight: Still processing
+* YouTube demo video: https://vimeo.com/368830807
 
 ## Questions (Answer indented below)
 
