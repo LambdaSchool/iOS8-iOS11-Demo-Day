@@ -16,36 +16,63 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 ## Links (Add your links)
 
-* Code: `<insert Github repository link here>`
-* Trello/Github Project Kanban: `<insert trello board here>`
-* Test Flight: `<insert beta signup link here>`
+* Code: [Poopmaster](https://github.com/mredig/Poopmaster)
+* Trello/Github Project Kanban: [Trello](https://trello.com/invite/b/CHICMbjN/cbe78ac10b15a9d7d1c7b809562fad8a/poopmaster)
+* Test Flight: [Testflight](https://testflight.apple.com/join/Dt85uyxu)
 * YouTube demo video: `<insert video url here>`
 
 ## Questions (Answer indented below)
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+    Charts - they just look so cool and are a great way to visualize your data!
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
 
-    `<Your answer here>`
+    Figuring out the migration process within Apple's sandboxing requirements. It was mostly just a logic/process problem, and it was fixed through "just doing it" and rubber ducking how the process might work. 
   
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
+	    private var _daysLogged: (days: Int, lastLogged: Date)?
+		var daysLogged: Int {
+			if let days = _daysLogged, Date().timeIntervalSince(days.lastLogged) < 60 {
+				return days.days
+			}
+			let fetchRequest: NSFetchRequest<CDPoop> = CDPoop.fetchRequest()
+			let timeDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+
+			fetchRequest.sortDescriptors = [timeDescriptor]
+
+			var oldest: CDPoop?
+			let moc = CoreDataStack.shared.mainContext
+			moc.performAndWait {
+				do {
+					let allPoops = try moc.fetch(fetchRequest)
+					oldest = allPoops.first
+				} catch {
+					NSLog("Error fetching oldest poop: \(error)")
+				}
+			}
+			guard let oldestDay = oldest?.timestamp else { return 1 }
+
+			let difference = Calendar.current.dateComponents([.day], from: oldestDay, to: Date())
+			let days = (difference.day ?? 0) + 1
+			_daysLogged = (days, Date())
+			return days
+		}
+
   
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
+    Track your digestive health by logging every time you poop into this app. You can get additional insight into your health if you log additional statistics about your stool. Your data will be easily visualized with pretty charts!
   
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    Bowel movement logging with data visualization.
   
 6. What are you future goals?
 
-    `<Your answer here>`
+    Track food intake to analyze how your diet is affecting your digestive health.
 
 ## Required Slides (Add your Keynote to your PR)
 
