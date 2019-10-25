@@ -16,9 +16,9 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 ## Links (Add your links)
 
-* Code: `<insert Github repository link here>`
-* Trello/Github Project Kanban: `<insert trello board here>`
-* Test Flight: `<insert beta signup link here>`
+* Code: `https://github.com/ios11superteam/foodMinder`
+* Trello/Github Project Kanban: `N/A Board was used for my first project built this week (this is my 2nd).  I modelled this one after that one.`
+* Test Flight: `N/A`
 * YouTube demo video: `<insert video url here>`
 
 ## Questions (Answer indented below)
