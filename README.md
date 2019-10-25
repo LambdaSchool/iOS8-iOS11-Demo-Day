@@ -76,6 +76,9 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
     * scrap realm code in new version
     * update for new revenue model
     * ipad support
+    * range export
+    	* also pdf export
+    * manual backup import
 
 ## Required Slides (Add your Keynote to your PR)
 
