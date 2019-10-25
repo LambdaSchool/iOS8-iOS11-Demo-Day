@@ -72,7 +72,10 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
   
 6. What are you future goals?
 
-    Track food intake to analyze how your diet is affecting your digestive health.
+    * Track food intake to analyze how your diet is affecting your digestive health.
+    * scrap realm code in new version
+    * update for new revenue model
+    * ipad support
 
 ## Required Slides (Add your Keynote to your PR)
 
