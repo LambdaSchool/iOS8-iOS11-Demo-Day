@@ -16,36 +16,94 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 ## Links (Add your links)
 
-* Code: `<insert Github repository link here>`
-* Trello/Github Project Kanban: `<insert trello board here>`
-* Test Flight: `<insert beta signup link here>`
-* YouTube demo video: `<insert video url here>`
+* Code: https://github.com/morsedan/HeartRateTracker/tree/master
+* Trello/Github Project Kanban: https://trello.com/b/FYUuI4EB/80-20-heart-rate-tracker
+* Test Flight: Still processing
+* YouTube demo video: https://vimeo.com/368830807
 
 ## Questions (Answer indented below)
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+    I really enjoyed implementing setting lactate threshold heartrate. I like how it cascades through to get the most accurate way of setting the user's LTHR even if you user doesn't understand how to use it.
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
 
-    `<Your answer here>`
+    Getting the dates of the tableview header was a big headache. I ended up just adjusting it manually every time I display the date. 
   
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
+    This is the code for setting the LTHR:
+    
+    func setLTHR() {
+        guard let lthrText = lthrTextField.text, let maxHRText = maxHRTextField.text, let ageText = ageTextField.text else { return }
+        if !lthrText.isEmpty {
+            guard let lthr = Int(lthrText)
+                else {
+                    lthrAlert(with: lthrText)
+                    return
+                    
+            }
+            guard lthr > 0
+                else {
+                    lthrAlert(with: lthrText)
+                    return }
+            settingsHelper?.setLTHR(to: lthr)
+            
+            dismiss(animated: true, completion: nil)
+            
+        } else if !maxHRText.isEmpty {
+            guard let maxHR = Int(maxHRText)
+                else {
+                    lthrAlert(with: maxHRText)
+                    return
+                    
+            }
+            let lthr = Int(Double(maxHR) * 0.88)
+            guard lthr > 0
+                else {
+                    lthrAlert(with: maxHRText)
+                    return
+                    
+            }
+            
+            settingsHelper?.setLTHR(to: lthr)
+            
+            dismiss(animated: true, completion: nil)
+            
+        } else if !ageText.isEmpty {
+            guard let age = Int(ageText)
+                else {
+                    lthrAlert(with: ageText)
+                    return
+                    
+            }
+            let lthr = Int(Double(220 - age) * 0.88)
+            guard lthr > 0
+                else {
+                    lthrAlert(with: ageText)
+                    return
+                    
+            }
+            
+            settingsHelper?.setLTHR(to: lthr)
+            
+            dismiss(animated: true, completion: nil)
+        }
+    }
   
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
+    Fitness trackers for endurance athletes aren't hard to come by, but what if you want to train using the 80/20 rule? Finally, there's an app for that! The 80/20 rule says that you should spend 80% of your training time below 90% of your lactate threshold heartrate (roughly 88% of your max heartrate), and as much as possible of the rest of the time above 102% of your lactate threshold heartrate. This app helps you see how well you are doing at following the 80/20 rule and helps you plan your coming workouts. 
   
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    See what percent of your workout you spent in zone 1, zone 2, and zone 3 of a 3 zone heart rate scheme.
   
 6. What are you future goals?
 
-    `<Your answer here>`
+    - Be able to take .fit files and download them from the web.
+    - Show 80/20 split over the length of a week.
 
 ## Required Slides (Add your Keynote to your PR)
 
