@@ -16,8 +16,8 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 ## Links (Add your links)
 
-* Code: `<insert Github repository link here>`
-* Trello/Github Project Kanban: `<insert trello board here>`
+* Code: `https://github.com/ios11superteam/FoodyFriends`
+* Trello/Github Project Kanban: `https://trello.com/b/TobSkpsg/ios-11-build-week-1-foody-friends`
 * Test Flight: `<insert beta signup link here>`
 * YouTube demo video: `<insert video url here>`
 
@@ -25,27 +25,33 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+    My favorite feature to implement was the notification popping up at a specific time/date
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
 
-    `<Your answer here>`
+    My number 1 obstacle was the notifications popping up at a specific time. I fixed it by making sure I set only flags and    not an entire converted Date() object.
   
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
+    func randomIsComing() {
+        for index in 0...(groupMembers.count - 1) {
+            let isComing = Int.random(in: 1...10)
+            groupMembers[index].isGoing = (isComing % 2 == 0) ? true : false
+        }
+    }
+    I am proud of this code because of how compact the code is for the logic being used.
   
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
+    Foody friends is an app that you can schedule a place to eat with your friends/co-workers. Friends can decide if they are attending or not and it will notify them when to leave.
   
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    Schedule to place to eat and app will send a notification to members when it is time to eat!
   
 6. What are you future goals?
 
-    `<Your answer here>`
+    Allow users to vote on going to a place or not, implement yelp, and maps/eta time till location of meetup.
 
 ## Required Slides (Add your Keynote to your PR)
 
