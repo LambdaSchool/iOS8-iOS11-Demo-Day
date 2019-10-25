@@ -25,27 +25,44 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+    `Even though it was one of the most simple, it was the Launch Screen.  I come from a design background, and feel that UX/UI can make or break an app.  Adding a Launch Screen made the app feel like a production app, and set the tone for a lightweight user experience within the app.`
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
 
-    `<Your answer here>`
+    `Deleting a pending local notification when an object is deleted from the array.  I was able to find the code to use, but being very new to local notifications, I was unsure how to implement it correctly.`
   
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
+    `extension FoodMinderViewController: AddFoodMinderDelegate {
+    func foodMinderWasAdded(_ foodMinder: FoodMinder) {
+        foodMinderPersisitentController.foodMinders.append(foodMinder)
+        DispatchQueue.main.async {
+            self.foodMinderPersisitentController.saveToPersistentStore()
+            self.tableView.reloadData()
+        }
+    }
+}`
+
+`Delegation is still a challenge for me to overcome.  Though I knew once I created a reminder, I needed to tie that into an object I can further manipulate.  I was able to work through the logic to creating an array of objects from a created notification, and was able to implement it into a delegate.  This is probably one of my most excited moments during the whole project.`
   
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
+    `Sometimes it's hard to remember to take time to eat...When you live a hectic and busy lifestyle (especially with work, school, kids, and family), sometimes it's hard to remember to take necessary snack and meal breaks.  The next thing you know, it's dinner time, and you've hardly eaten all day, if you've even eaten at all!
+But don't worry, foodMinder's got your back!
+foodMinder is a lightweight iOS app to help you remember to eat throughout the day!`
   
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    `Without adding to your already hectic day, 
+foodMinder's #1 function is to manage quick and easy food reminders, 
+with a lightweight and simple interface.`
   
 6. What are you future goals?
 
-    `<Your answer here>`
+ `Recurring foodMinders
+ Suggested foodMinders
+ Suggested meals
+ Nutrition tracking`
 
 ## Required Slides (Add your Keynote to your PR)
 
