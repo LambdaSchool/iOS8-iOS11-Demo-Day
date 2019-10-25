@@ -16,8 +16,8 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 ## Links (Add your links)
 
-* Code: `<insert Github repository link here>`
-* Trello/Github Project Kanban: `<insert trello board here>`
+* Code: https://github.com/narmkumar/MedicationTrackerLite
+* Trello/Github Project Kanban: https://www.taskade.com/v/Na2BVjB5p4UHz2RD
 * Test Flight: `<insert beta signup link here>`
 * YouTube demo video: `<insert video url here>`
 
@@ -25,27 +25,44 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+    My favorite feature to implement was how we auto-updated our "Today's" Medication section with the information from the date formatter. It was interesting to be able to convert the Date Formatter value into a string, then into an Int, and back into into a string with just the day of the week we needed to auto update our medication section.
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
+   Our main obstacles / bugs were the small details in recoginzing where our functions should run properly. Our logic for the most part was straight forward, but had to deal with the small details to get our app to behave the way we wanted.
 
-    `<Your answer here>`
-  
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
-  
+    As simple as this looks, this feature allowed us to implement the auto-update day feature in our app by checking the value of the user defaults every time. By using a delegate from our controller to determine whether to reset the view or not, we were able to achieve an extremely important feature with just a few lines of code.
+
+        // Runs once view loads. Sets the day in user defaults and sets the controllers delegate to itself.
+    override func viewDidLoad() {
+        let defaults = UserDefaults.standard
+        defaults.set(medicationController.today, forKey: "day")
+        super.viewDidLoad()
+        medicationController.delegate = self
+        }
+    
+    // Runs before the view will appear. Compares current day to saved day in order to run resetDay() method.
+    override func viewWillAppear(_ animated: Bool) {
+        let day = UserDefaults.standard.string(forKey: "day") ?? ""
+        let newDay = medicationController.getToday()
+        if newDay != day {
+            medicationController.resetDay()
+        }
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }  
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
-  
+Medication Tracker Lite is the perfect app for anyone who wants to keep track of the medications they need to take on a daily basis. It’s this simple: input your medication info, the days it needs to be taken, along with a description, and you’re good to go! Every day, the app will refresh and update so that you will know exactly what meds need to be taken.
+
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    Auto Refresh  / Low Pill Count - Refill Reminder.
   
 6. What are you future goals?
 
-    `<Your answer here>`
+    Future goals would be to implement a reminder notification for each medication and/or groups of medications so that the user can be notifid at the proper times when they need to take their medicines.
 
 ## Required Slides (Add your Keynote to your PR)
 
