@@ -16,36 +16,82 @@ The video demo is for sharing your work on your portfolio, but it is also a fall
 
 ## Links (Add your links)
 
-* Code: `<insert Github repository link here>`
-* Trello/Github Project Kanban: `<insert trello board here>`
-* Test Flight: `<insert beta signup link here>`
-* YouTube demo video: `<insert video url here>`
+* Code: `https://github.com/bradleyyin/TravelBook`
+* Trello/Github Project Kanban: `https://trello.com/b/oBj9JYi8/travel-app`
+* YouTube demo video: `https://youtu.be/6uY-EjzW_8g`
 
 ## Questions (Answer indented below)
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+`My favorite feature to implement was displaying the trip on to the map because having a quick way to see where you have traveled is satisfying, especially when your trip counts are high.`
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
 
-    `<Your answer here>`
+`the number one obstacle I encountered was the the image orientation changing unexpectedly, later found out that the image will be store in the cloud differently even if they look upright at first. So I flatten the image before uploading the image so it is always upright.`
   
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
+``` swift
+func uploadPhoto(photo: UIImage, completion: @escaping (URL?) -> Void) {
+    
+    guard let userID = Auth.auth().currentUser?.uid else { return }
+    
+    let photoID = UUID().uuidString
+    
+    let photoRef = storageRef.child("photos").child(userID).child(photoID)
+    let resizedPhoto = photo.imageByScaling(toSize: CGSize(width: 300, height: 300))
+    let flattenedPhoto = resizedPhoto?.flattened
+    guard let photoData = flattenedPhoto?.jpegData(compressionQuality: 1.0) else { return }
+    
+    let uploadTask = photoRef.putData(photoData, metadata: nil) { (metadata, error) in
+        if let error = error {
+            NSLog("Error storing media data: \(error)")
+            completion(nil)
+            return
+        }
+        
+        if metadata == nil {
+            NSLog("No metadata returned from upload task.")
+            completion(nil)
+            return
+        }
+        
+        photoRef.downloadURL(completion: { (url, error) in
+            
+            if let error = error {
+                NSLog("Error getting download url of media: \(error)")
+            }
+            
+            guard let url = url else {
+                NSLog("Download url is nil. Unable to create a Media object")
+                
+                completion(nil)
+                return
+            }
+            completion(url)
+        })
+    }
+    
+    uploadTask.resume()
+}
+
+```
+
+the above piece of code help me upload my photos in a configured way so it's not too big and it's always upright.
+
   
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
+    `a travel app that allows a comprehensive view , a world map, of the places traveled. The app combines journal and map to allow you to see where you have traveled in a glance on the map, as well as seeing the detail of each travel in a journal form`
   
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    `displaying photos on the map, to be view at a glance and show off how many places you have been`
   
 6. What are you future goals?
 
-    `<Your answer here>`
+    `work on improving the UX, allow more content in the entry, add a profile page to track total trip counts`
 
 ## Required Slides (Add your Keynote to your PR)
 
