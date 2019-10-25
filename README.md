@@ -99,6 +99,6 @@ Plan on having one person present the slides and live demo. Please practice your
 * App Name / Team Slide (30 seconds)
 * Elevator Pitch Slide (30 seconds)
 * Your #1 Feature (30 seconds)
-* Live Demo (2 minutes)
+* Live Demo (2 minutes) 
 * Future Goals (30 seconds)
 * Questions (3 minutes)
